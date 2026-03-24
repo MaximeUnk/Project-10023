@@ -1,0 +1,99 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm;
+  border-radius: $radius-md;
+  background: $bg-input;
+  border: 1px solid $border-color;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $border-light;
+  }
+
+  &:focus-within {
+    border-color: $primary;
+    box-shadow: 0 0 0 2px rgba($primary, 0.1);
+  }
+
+  &--done {
+    .todo-item__input {
+      text-decoration: line-through;
+      color: $text-muted;
+    }
+  }
+
+  &__check {
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    border: 2px solid $border-light;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    @include flex-center;
+    transition: all $transition-fast;
+    color: white;
+
+    &--checked {
+      background: $success;
+      border-color: $success;
+    }
+
+    &:hover:not(.todo-item__check--checked) {
+      border-color: $primary;
+      background: rgba($primary, 0.1);
+    }
+
+    &:hover.todo-item__check--checked {
+      background: color.adjust($success, $lightness: -10%);
+    }
+  }
+
+  &__input {
+    @include input-style;
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: $font-size-base;
+    flex: 1;
+    min-width: 0;
+
+    &:focus {
+      box-shadow: none;
+      border: none;
+    }
+  }
+
+  &__delete {
+    @include btn-base;
+    background: transparent;
+    color: $text-muted;
+    padding: 4px;
+    border-radius: $radius-sm;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: all $transition-fast;
+
+    .todo-item:hover & {
+      opacity: 1;
+    }
+
+    &:hover {
+      color: $danger;
+      background: rgba($danger, 0.1);
+    }
+  }
+}
+
+.check-enter-active,
+.check-leave-active {
+  transition: all $transition-fast;
+}
+
+.check-enter-from,
+.check-leave-to {
+  opacity: 0;
+  transform: scale(0.5);
+}

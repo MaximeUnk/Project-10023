@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  nuxt-notes:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nuxt-notes-app
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+
+networks:
+  default:
+    name: nuxt-notes-network

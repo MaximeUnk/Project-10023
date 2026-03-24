@@ -1,0 +1,131 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: $z-overlay;
+  @include flex-center;
+  padding: $spacing-md;
+}
+
+.modal {
+  background: $bg-modal;
+  border-radius: $radius-xl;
+  border: 1px solid $border-color;
+  padding: $spacing-xl;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: $shadow-lg;
+  position: relative;
+
+  &--danger {
+    border-color: rgba($danger, 0.3);
+  }
+
+  &--warning {
+    border-color: rgba($warning, 0.3);
+  }
+
+  &__header {
+    @include flex-between;
+    margin-bottom: $spacing-md;
+    gap: $spacing-sm;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $text-primary;
+    flex: 1;
+  }
+
+  &__close {
+    @include btn-base;
+    background: transparent;
+    color: $text-muted;
+    padding: $spacing-xs;
+    border-radius: $radius-sm;
+    flex-shrink: 0;
+
+    &:hover {
+      background: $border-color;
+      color: $text-primary;
+    }
+  }
+
+  &__body {
+    margin-bottom: $spacing-md;
+  }
+
+  &__message {
+    color: $text-secondary;
+    font-size: $font-size-base;
+    line-height: 1.6;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-sm;
+    justify-content: flex-end;
+
+    @include max-sm {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity $transition-base;
+
+  .modal {
+    transition: transform $transition-base, opacity $transition-base;
+  }
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+
+  .modal {
+    transform: scale(0.94) translateY(10px);
+    opacity: 0;
+  }
+}
+
+.modal-btn {
+  @include btn-base;
+  min-width: 100px;
+
+  &--primary {
+    background: $primary;
+    color: white;
+
+    &:hover:not(:disabled) {
+      background: $primary-dark;
+      box-shadow: $shadow-primary;
+    }
+  }
+
+  &--danger {
+    background: $danger;
+    color: white;
+
+    &:hover:not(:disabled) {
+      background: $danger-dark;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $text-secondary;
+    border: 1px solid $border-color;
+
+    &:hover:not(:disabled) {
+      background: $border-color;
+      color: $text-primary;
+    }
+  }
+}

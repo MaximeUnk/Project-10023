@@ -1,0 +1,121 @@
+.home-page {
+  min-height: 100vh;
+
+  &__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  &__count {
+    font-size: $font-size-sm;
+    color: $text-muted;
+    white-space: nowrap;
+
+    @include max-sm {
+      display: none;
+    }
+  }
+
+  &__main {
+    padding: $spacing-2xl $spacing-md;
+
+    @include max-md {
+      padding: $spacing-xl $spacing-md;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: $spacing-lg;
+
+    @include max-md {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: $spacing-md;
+    }
+
+    @include max-sm {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-lg;
+    padding: $spacing-2xl $spacing-md;
+    text-align: center;
+    min-height: 60vh;
+  }
+
+  &__empty-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, rgba($primary, 0.1), rgba($primary-dark, 0.1));
+    border-radius: $radius-xl;
+    @include flex-center;
+    color: $text-muted;
+    border: 1px solid rgba($primary, 0.15);
+  }
+
+  &__empty-title {
+    font-size: $font-size-2xl;
+    font-weight: 700;
+    color: $text-primary;
+    margin: 0;
+  }
+
+  &__empty-text {
+    font-size: $font-size-base;
+    color: $text-muted;
+    margin: 0;
+    max-width: 320px;
+  }
+}
+
+.home-page-btn {
+  @include btn-base;
+  gap: $spacing-sm;
+
+  &--primary {
+    background: $primary;
+    color: white;
+    padding: 10px $spacing-md;
+
+    &:hover:not(:disabled) {
+      background: $primary-dark;
+      box-shadow: $shadow-primary;
+    }
+  }
+
+  &--lg {
+    padding: 14px $spacing-xl;
+    font-size: $font-size-base;
+  }
+}
+
+.notes-list-enter-active {
+  transition: all 0.3s ease;
+}
+
+.notes-list-leave-active {
+  transition: all 0.25s ease;
+  position: absolute;
+}
+
+.notes-list-enter-from {
+  opacity: 0;
+  transform: scale(0.95) translateY(10px);
+}
+
+.notes-list-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.notes-list-move {
+  transition: transform 0.3s ease;
+}

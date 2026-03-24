@@ -1,0 +1,305 @@
+.edit-page {
+  min-height: 100vh;
+
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    @include max-sm {
+      gap: 4px;
+    }
+  }
+
+  &__history-btns {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__divider {
+    width: 1px;
+    height: 24px;
+    background: $border-color;
+    margin: 0 $spacing-xs;
+
+    @include max-sm {
+      display: none;
+    }
+  }
+
+  &__main {
+    padding: $spacing-2xl $spacing-md;
+
+    @include max-md {
+      padding: $spacing-xl $spacing-md;
+    }
+  }
+
+  &__card {
+    @include card;
+    padding: $spacing-xl;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+
+    @include max-sm {
+      padding: $spacing-md;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__label {
+    font-size: $font-size-xs;
+    font-weight: 600;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  &__title-input {
+    @include input-style;
+    font-size: $font-size-xl;
+    font-weight: 700;
+    padding: $spacing-md;
+    color: $text-primary;
+
+    &::placeholder {
+      color: $text-muted;
+      font-weight: 400;
+    }
+  }
+
+  &__todos-header {
+    @include flex-between;
+    gap: $spacing-sm;
+  }
+
+  &__todos-count {
+    font-size: $font-size-xs;
+    color: $primary-light;
+    font-weight: 600;
+  }
+
+  &__progress {
+    height: 4px;
+    background: $border-color;
+    border-radius: $radius-full;
+    overflow: hidden;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__progress-fill {
+    @include progress-fill;
+  }
+
+  &__todos {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__add-todo {
+    @include btn-base;
+    @include flex-start;
+    gap: $spacing-sm;
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    color: $text-muted;
+    border: 1.5px dashed $border-color;
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    margin-top: $spacing-xs;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: $primary-light;
+      border-color: rgba($primary, 0.5);
+      background: rgba($primary, 0.05);
+    }
+  }
+
+  &__meta {
+    display: flex;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+    font-size: $font-size-xs;
+    color: $text-muted;
+    padding-top: $spacing-md;
+    border-top: 1px solid $border-color;
+
+    @include max-sm {
+      flex-direction: column;
+      gap: $spacing-xs;
+    }
+  }
+
+  &__not-found {
+    min-height: calc(100vh - 70px);
+    @include flex-center;
+    padding: $spacing-md;
+  }
+
+  &__not-found-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-lg;
+    text-align: center;
+
+    h2 {
+      font-size: $font-size-2xl;
+      color: $text-primary;
+      margin: 0;
+    }
+
+    p {
+      color: $text-muted;
+      margin: 0;
+    }
+  }
+
+}
+
+.toolbar-btn {
+  @include btn-base;
+  padding: 8px;
+  background: transparent;
+  color: $text-muted;
+  border-radius: $radius-sm;
+  border: 1px solid transparent;
+
+  &:hover:not(:disabled) {
+    background: $border-color;
+    color: $text-primary;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &--text {
+    padding: 8px 12px;
+    gap: $spacing-xs;
+    display: flex;
+    align-items: center;
+    border: 1px solid $border-color;
+
+    &:hover:not(:disabled) {
+      background: $border-color;
+      color: $text-primary;
+      border-color: $border-light;
+    }
+  }
+
+  &--danger {
+    padding: 8px 12px;
+    gap: $spacing-xs;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba($danger, 0.25);
+    color: color.adjust($danger, $lightness: 15%);
+
+    &:hover:not(:disabled) {
+      background: rgba($danger, 0.15);
+      border-color: $danger;
+      color: color.adjust($danger, $lightness: 20%);
+    }
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+
+    @include max-sm {
+      display: none;
+    }
+  }
+}
+
+.edit-page-btn {
+  @include btn-base;
+  gap: $spacing-sm;
+
+  &--primary {
+    background: $primary;
+    color: white;
+    padding: 8px $spacing-md;
+    font-size: $font-size-sm;
+
+    &:hover:not(:disabled) {
+      background: $primary-dark;
+      box-shadow: $shadow-primary;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.todo-list-enter-active {
+  transition: all 0.2s ease;
+}
+
+.todo-list-leave-active {
+  transition: all 0.15s ease;
+}
+
+.todo-list-enter-from {
+  opacity: 0;
+  transform: translateX(-8px);
+}
+
+.todo-list-leave-to {
+  opacity: 0;
+  transform: translateX(8px);
+}
+
+.toast {
+  position: fixed;
+  bottom: $spacing-xl;
+  right: $spacing-xl;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: 12px $spacing-lg;
+  border-radius: $radius-lg;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  box-shadow: $shadow-lg;
+  z-index: $z-tooltip;
+
+  &--success {
+    background: rgba($success, 0.15);
+    color: color.adjust($success, $lightness: 20%);
+    border: 1px solid rgba($success, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  @include max-sm {
+    bottom: $spacing-md;
+    right: $spacing-md;
+    left: $spacing-md;
+    justify-content: center;
+  }
+}
+
+.toast-enter-active,
+.toast-leave-active {
+  transition: all 0.3s ease;
+}
+
+.toast-enter-from,
+.toast-leave-to {
+  opacity: 0;
+  transform: translateY(12px);
+}

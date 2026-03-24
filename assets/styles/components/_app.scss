@@ -1,0 +1,11 @@
+.app {
+  min-height: 100vh;
+  background: $bg-primary;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
